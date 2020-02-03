@@ -41,3 +41,10 @@ class SlpStringVisitor(SlpVisitor):
         ctx.exp().accept(self)
         self.emit(", ")
         ctx.exp_list().accept(self)
+
+    def visitEseq(self, ctx: SlpParser.EseqContext):
+        self.emit("(")
+        ctx.stm().accept(self)
+        self.emit(",")
+        ctx.exp().accept(self)
+        self.emit(")")
